@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,3 +169,175 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Animation with Wishes</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(circle, #1e1e2f, #000); /* Night sky */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .heart {
+            width: 150px;
+            height: 150px;
+            background: red;
+            position: absolute;
+            transform: translate(-50%, -50%) rotate(45deg);
+            top: 50%;
+            left: 50%;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.5s;
+        }
+
+        .heart:hover {
+            transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 150px;
+            height: 150px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -75px;
+            top: 0;
+        }
+
+        .heart.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkling 2s infinite;
+        }
+
+        @keyframes twinkling {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .moon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #fdfdcf;
+            border-radius: 50%;
+            top: 10%;
+            right: 10%;
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('classimage.jpg') no-repeat center center/cover;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 1s;
+        }
+
+        .background-visible {
+            opacity: 0.3; /* Reduced opacity for the background image */
+            z-index: 1;
+        }
+
+        .message {
+            position: absolute;
+            top: 70%;
+            text-align: center;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.5s;
+        }
+
+        .message.visible {
+            opacity: 1;
+        }
+
+        .message h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: yellow;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .message p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+    <div class="moon"></div>
+
+    <!-- Wishes and Message -->
+    <div class="message">
+        <h1>Happy New Year 2025!</h1>
+        <p>Under this starry night, may your dreams shine bright! 🌟</p>
+    </div>
+
+    <!-- Generate stars -->
+    <script>
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'stars';
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            document.body.appendChild(star);
+        }
+    </script>
+
+    <!-- Background Image -->
+    <div class="background-image"></div>
+
+    <script>
+        const heart = document.querySelector('.heart');
+        const backgroundImage = document.querySelector('.background-image');
+        const message = document.querySelector('.message');
+
+        heart.addEventListener('click', () => {
+            backgroundImage.classList.add('background-visible');
+            message.classList.add('visible');
+            heart.classList.add('hidden'); // Make the heart disappear
+        });
+    </script>
+</body>
+</html>
+>>>>>>> 68e68789072af81f84061a85b3ba45fc67dbff0e
